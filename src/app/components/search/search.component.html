@@ -1,1 +1,27 @@
-<app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <div style="margin-top: 1%; width: 25%">
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+    </div>
+</div>
+
+<div class="container" style="display: flex; justify-content: center">
+    <div style="width: 50%;">
+        <mat-card *ngFor="let player of matches" style="margin-bottom: 5px;">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 10%;">
+                        {{ player.rating }}
+                    </td>
+                    <td style="width: 10%;">
+                        {{ player.position }}
+                    </td>
+                    <td style="width: 30%;">
+                        {{ player.name }}
+                    </td>
+                    <td style="width: 50%;">
+                    </td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+</div>

@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatCardModule,
+  MatInputModule,
+  MatFormFieldModule
+} from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,9 +28,11 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTableModule,
     AppRoutingModule
   ],
   providers: [],
