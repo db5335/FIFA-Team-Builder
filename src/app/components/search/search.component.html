@@ -19,6 +19,12 @@
                         {{ player.name }}
                     </td>
                     <td style="width: 50%;">
+                        <button mat-icon-button (click)="add(player)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="remove(player)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </table>

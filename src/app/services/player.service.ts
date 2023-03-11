@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Outfielder } from '../model/outfielder';
-import { Goalkeeper } from '../model/goalkeeper';
+import { Player } from '../model/player';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
 
-  public players: (Outfielder | Goalkeeper)[] = [];
+  public players: Player[] = [];
 
   constructor(private http: HttpClient) {
-    this.http.get('assets/outfielders.csv', {responseType: 'text'})
+    this.http.get('assets/players.csv', {responseType: 'text'})
     .subscribe(
         data => {
             let csvToRowArray = data.split("\n");
-            for (let index = 0; index < csvToRowArray.length - 1; index++) {
+            for (let index = 1; index < csvToRowArray.length - 1; index++) {
               let row = csvToRowArray[index].split(",");
-              let player = new Outfielder(
+              let player = new Player(
+                index,
                 row[0],
-                parseInt(row[1], 10),
-                row[2],
+                parseInt(row[2], 10),
+                row[1],
                 parseInt(row[3], 10),
                 parseInt(row[4], 10),
                 parseInt(row[5], 10),
@@ -36,25 +36,8 @@ export class PlayerService {
                 parseInt(row[15], 10),
                 parseInt(row[16], 10),
                 parseInt(row[17], 10),
-                parseInt(row[18], 10)
-              );
-              this.players.push(player);
-            }
-        },
-        error => {
-            console.log(error);
-        }
-    );
-
-    this.http.get('assets/goalkeepers.csv', {responseType: 'text'})
-    .subscribe(
-        data => {
-            let csvToRowArray = data.split("\n");
-            for (let index = 0; index < csvToRowArray.length - 1; index++) {
-              let row = csvToRowArray[index].split(",");
-              let player = new Goalkeeper(
-                row[0],
-                parseInt(row[1], 10)
+                parseInt(row[18], 10),
+                parseInt(row[19], 10)
               );
               this.players.push(player);
             }
@@ -65,8 +48,8 @@ export class PlayerService {
     );
   }
 
-  getMatchingPlayers(name: string): (Outfielder | Goalkeeper)[] {
-    let players: (Outfielder | Goalkeeper)[] = [];
+  getMatchingPlayers(name: string): Player[] {
+    let players: Player[] = [];
     name = name.toLowerCase();
 
     for (let player of this.players) {

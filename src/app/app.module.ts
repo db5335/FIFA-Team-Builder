@@ -4,11 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+  MatButtonModule,
   MatCardModule,
+  MatIconModule,
   MatInputModule,
   MatFormFieldModule
 } from '@angular/material';
-import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,10 +30,11 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
     MatCardModule,
+    MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule,
     AppRoutingModule
   ],
   providers: [],

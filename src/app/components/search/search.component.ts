@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Goalkeeper } from 'src/app/model/goalkeeper';
-import { Outfielder } from 'src/app/model/outfielder';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Player } from 'src/app/model/player';
 import { PlayerService } from 'src/app/services/player.service';
 import { SquadService } from 'src/app/services/squad.service';
 
@@ -12,16 +11,25 @@ import { SquadService } from 'src/app/services/squad.service';
 export class SearchComponent implements OnInit {
 
   constructor(
-    private playerService: PlayerService,
-    private squadService: SquadService
+    private playerService: PlayerService
   ) { }
 
-  matches: (Outfielder | Goalkeeper)[] = [];
+  matches: Player[] = [];
+  @Output() addEvent = new EventEmitter<Player>();
+  @Output() removeEvent = new EventEmitter<Player>();
 
   ngOnInit(): void {
   }
 
   public onSearch(name: string): void {
     this.matches = this.playerService.getMatchingPlayers(name);
+  }
+
+  public add(player: Player): void {
+    this.addEvent.emit(player);
+  }
+
+  public remove(player: Player): void {
+    this.removeEvent.emit(player);
   }
 }

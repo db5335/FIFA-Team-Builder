@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: center;">
-  <div style="margin-top: 1%; width: 98%">
+  <div style="margin-top: 1%; margin-bottom: 1%; width: 98%">
     <mat-card style="background-color: navajowhite;">
       <mat-card-header style="display: flex; justify-content: center; align-items: center;">
         <mat-card-title>
@@ -31,8 +31,27 @@
       </mat-card>
     
       <mat-card-content>
-        <app-search></app-search>
+        <app-search (addEvent)="onAdd($event)" (removeEvent)="onRemove($event)"></app-search>
       </mat-card-content>
     </mat-card>  
+
+    <mat-card style="background-color: navajowhite; margin-top: 1%;">
+      <mat-card style="background-color: blanchedalmond;">
+          <mat-card-content>
+            <h3>Stage 3: Build Team</h3>
+          </mat-card-content>
+      </mat-card>
+    
+      <mat-card-content>
+      </mat-card-content>
+    </mat-card>  
+
+    <mat-card style="background-color: navajowhite; margin-top: 1%;">
+      <mat-card-content>
+        <ul *ngFor="let player of this.getPlayers()">
+          {{ player | json }}
+        </ul>
+      </mat-card-content>
+    </mat-card> 
   </div>
 </div>
