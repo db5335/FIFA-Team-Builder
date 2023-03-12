@@ -20,6 +20,10 @@ export class SquadService {
     this.squad.delete(player);
   }
 
+  public clear() {
+    this.squad.clear();
+  }
+
   public setFormation(formation: Formation) {
     this.formation = formation;
   }

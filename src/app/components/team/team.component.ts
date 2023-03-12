@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Formation } from 'src/app/model/formation';
 import { Player } from 'src/app/model/player';
 
 @Component({
@@ -10,7 +11,9 @@ export class TeamComponent implements OnInit {
 
   constructor() { }
 
+  @Input() formation: Formation | null = null;
   @Input() players: Player[] = [];
+  @Input() solution: number[] = [];
 
   ngOnInit(): void {
   }

@@ -19,6 +19,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { TeamComponent } from './components/team/team.component';
 import { SelectFormationComponent } from './components/select-formation/select-formation.component';
 import { SquadComponent } from './components/squad/squad.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SquadComponent } from './components/squad/squad.component';
     SearchBarComponent,
     TeamComponent,
     SelectFormationComponent,
-    SquadComponent
+    SquadComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

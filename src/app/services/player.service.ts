@@ -61,4 +61,8 @@ export class PlayerService {
 
     return players;
   }
+
+  getRandomPlayer() {
+    return this.players[Math.floor(Math.random() * this.players.length)];
+  }
 }

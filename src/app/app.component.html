@@ -47,8 +47,12 @@
         <app-squad [formation]="this.getFormation()" [players]="this.getPlayers()"></app-squad>
         <div style="display: flex; justify-content: center;"> 
           <button mat-raised-button style="background-color: blanchedalmond; font-size: x-large;"
-            [disabled]="this.getFormation() == null || this.getPlayers().length < 11">
+            [disabled]="this.getFormation() == null || this.getPlayers().length < 11" (click)="run()">
             Go!
+          </button>
+          <button mat-raised-button style="background-color: blanchedalmond; font-size: x-large;"
+            (click)="randomize()">
+            Randomize
           </button>
         </div>
       </mat-card-content>
@@ -56,7 +60,7 @@
 
     <mat-card style="background-color: navajowhite; margin-top: 1%;">
       <mat-card-content>
-        <app-team [players]="this.getPlayers()"></app-team>
+        <app-team [formation]="this.getFormation()" [players]="this.getPlayers()" [solution]="this.run()"></app-team>
       </mat-card-content>
     </mat-card> 
   </div>

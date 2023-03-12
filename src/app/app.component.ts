@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Formation } from './model/formation';
 import { Player } from './model/player';
+import { BuilderService } from './services/builder.service';
+import { PlayerService } from './services/player.service';
 import { SquadService } from './services/squad.service';
 
 @Component({
@@ -12,7 +14,9 @@ export class AppComponent {
   title = 'FIFA-Team-Builder';
 
   constructor(
-    private squadService: SquadService
+    private squadService: SquadService,
+    private builderService: BuilderService,
+    private playerService: PlayerService
   ) {}
 
   public onAdd(player: Player) {
@@ -34,5 +38,19 @@ export class AppComponent {
 
   public getPlayers() {
     return Array.from(this.squadService.squad);
+  }
+
+  public run() {
+    if (this.getFormation() == null || this.getPlayers().length < 11) {
+      return []
+    }
+    return this.builderService.build(this.getFormation() as Formation, this.getPlayers());
+  }
+
+  public randomize() {
+    this.squadService.clear();
+    while (this.getPlayers().length < 18) {
+      this.squadService.add(this.playerService.getRandomPlayer());
+    }
   }
 }
