@@ -8,21 +8,26 @@ import {
   MatCardModule,
   MatIconModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { PlayerListComponent } from './components/player-list/player-list.component';
+import { TeamComponent } from './components/team/team.component';
+import { SelectFormationComponent } from './components/select-formation/select-formation.component';
+import { SquadComponent } from './components/squad/squad.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     SearchBarComponent,
-    PlayerListComponent
+    TeamComponent,
+    SelectFormationComponent,
+    SquadComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
     AppRoutingModule
   ],
   providers: [],

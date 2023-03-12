@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Formation } from './model/formation';
 import { Player } from './model/player';
 import { SquadService } from './services/squad.service';
 
@@ -22,7 +23,16 @@ export class AppComponent {
     this.squadService.remove(player);
   }
 
+  public onSelect(formation: Formation) {
+    console.log(formation);
+    this.squadService.setFormation(formation);
+  }
+
+  public getFormation() {
+    return this.squadService.formation;
+  }
+
   public getPlayers() {
-    return this.squadService.squad;
+    return Array.from(this.squadService.squad);
   }
 }

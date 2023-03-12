@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Formation } from '../model/formation';
 import { Player } from '../model/player';
 
 @Injectable({
@@ -8,6 +9,7 @@ export class SquadService {
 
   constructor() { }
 
+  formation: Formation | null = null;
   squad: Set<Player> = new Set();
 
   public add(player: Player) {
@@ -16,5 +18,9 @@ export class SquadService {
 
   public remove(player: Player) {
     this.squad.delete(player);
+  }
+
+  public setFormation(formation: Formation) {
+    this.formation = formation;
   }
 }

@@ -1,0 +1,25 @@
+<div class="container" style="display: flex; justify-content: center">
+    <div style="width: 50%;">
+        <div *ngIf="formation != null; else noFormation" style="text-align: center;">
+            {{ formation.name }}
+        </div>
+        <ng-template #noFormation>
+            <div style="text-align: center;">
+                No formation selected
+            </div>
+        </ng-template>
+        <table style="width: 100%;">
+            <tr *ngFor="let player of players">
+                <td style="width: 40%;">
+                    {{ player.name }}
+                </td>
+                <td style="width: 20%; text-align: center;">
+                    {{ player.rating }}
+                </td>
+                <td style="width: 40%; text-align: right;">
+                    {{ player.position }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

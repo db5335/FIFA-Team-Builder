@@ -1,0 +1,7 @@
+<div style="display: flex; justify-content: center;">
+    <mat-select style="width: 25%; font-size: x-large;" [(ngModel)]="formation" placeholder="Formation" (selectionChange)="select()">
+        <mat-option *ngFor="let formation of this.formations" value="{{ formation.name }}">
+            {{ formation.name }}
+        </mat-option>
+    </mat-select>      
+</div>
