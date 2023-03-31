@@ -11,9 +11,9 @@ export class TeamComponent implements OnInit {
 
   constructor() { }
 
-  @Input() formation: Formation | null = null;
-  @Input() players: Player[] = [];
-  @Input() solution: number[] = [];
+  @Input() formation: Formation | undefined = undefined;
+  @Input() players: Player[] | undefined = undefined;
+  @Input() solution: number[] | undefined = undefined;
 
   ngOnInit(): void {
   }

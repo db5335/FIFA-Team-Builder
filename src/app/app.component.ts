@@ -19,6 +19,8 @@ export class AppComponent {
     private playerService: PlayerService
   ) {}
 
+  solution: { formation: Formation, players: Player[], assignment: number[] } | null = null;
+
   public onAdd(player: Player) {
     this.squadService.add(player);
   }
@@ -41,10 +43,18 @@ export class AppComponent {
   }
 
   public run() {
-    if (this.getFormation() == null || this.getPlayers().length < 11) {
-      return []
+    if (this.getFormation() != null && this.getPlayers().length >= 11) {
+      this.solution = {
+        formation: this.getFormation() as Formation,
+        players: this.getPlayers() as Player[],
+        assignment: this.builderService.build(this.getFormation() as Formation, this.getPlayers())
+      };
+      console.log(this.solution);
+      setTimeout(() => {
+        document.getElementById('team')!.scrollIntoView({behavior: 'smooth'});
+      }, 10);
+
     }
-    return this.builderService.build(this.getFormation() as Formation, this.getPlayers());
   }
 
   public randomize() {
@@ -52,5 +62,6 @@ export class AppComponent {
     while (this.getPlayers().length < 18) {
       this.squadService.add(this.playerService.getRandomPlayer());
     }
+    this.run();
   }
 }

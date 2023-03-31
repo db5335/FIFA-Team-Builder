@@ -1,19 +1,18 @@
-<div *ngIf="solution.length == 11 && formation != null" [ngSwitch]="formation.name">
-    <ng-container *ngSwitchCase="'3-1-4-2'">
-        <div style="height: 600px">
-            <app-player [player]="players[solution[0]]" [position]="formation.positions[0]" top="500" left="45"></app-player>
-            <app-player [player]="players[solution[1]]" [position]="formation.positions[1]" top="400" left="15"></app-player>
-            <app-player [player]="players[solution[2]]" [position]="formation.positions[2]" top="400" left="45"></app-player>
-            <app-player [player]="players[solution[3]]" [position]="formation.positions[3]" top="400" left="75"></app-player>
-            <app-player [player]="players[solution[4]]" [position]="formation.positions[4]" top="300" left="45"></app-player>
-            <app-player [player]="players[solution[5]]" [position]="formation.positions[5]" top="200" left="10"></app-player>
-            <app-player [player]="players[solution[6]]" [position]="formation.positions[6]" top="200" left="35"></app-player>
-            <app-player [player]="players[solution[7]]" [position]="formation.positions[7]" top="200" left="55"></app-player>
-            <app-player [player]="players[solution[8]]" [position]="formation.positions[8]" top="200" left="80"></app-player>
-            <app-player [player]="players[solution[9]]" [position]="formation.positions[9]" top="100" left="30"></app-player>
-            <app-player [player]="players[solution[10]]" [position]="formation.positions[10]" top="100" left="60"></app-player>
-        </div>
-
-    </ng-container>
-    <div *ngSwitchDefault>{{ formation.name }}</div>
+<div style="height: 1000px; background-image: url(../../../assets/pitch.png); background-size: 100% 100%;">
+    <div *ngIf="formation && players && solution && solution.length == 11" [ngSwitch]="formation.name">
+        <ng-container *ngSwitchCase="'3-1-4-2'">
+            <app-player [player]="players[solution[0]]" [position]="formation.positions[0]" top="875" left="45"></app-player>
+            <app-player [player]="players[solution[1]]" [position]="formation.positions[1]" top="700" left="15"></app-player>
+            <app-player [player]="players[solution[2]]" [position]="formation.positions[2]" top="700" left="45"></app-player>
+            <app-player [player]="players[solution[3]]" [position]="formation.positions[3]" top="700" left="75"></app-player>
+            <app-player [player]="players[solution[4]]" [position]="formation.positions[4]" top="550" left="45"></app-player>
+            <app-player [player]="players[solution[5]]" [position]="formation.positions[5]" top="375" left="10"></app-player>
+            <app-player [player]="players[solution[6]]" [position]="formation.positions[6]" top="375" left="35"></app-player>
+            <app-player [player]="players[solution[7]]" [position]="formation.positions[7]" top="375" left="55"></app-player>
+            <app-player [player]="players[solution[8]]" [position]="formation.positions[8]" top="375" left="80"></app-player>
+            <app-player [player]="players[solution[9]]" [position]="formation.positions[9]" top="200" left="30"></app-player>
+            <app-player [player]="players[solution[10]]" [position]="formation.positions[10]" top="200" left="60"></app-player>
+        </ng-container>
+        <div *ngSwitchDefault>{{ formation.name }}</div>
+    </div>
 </div>

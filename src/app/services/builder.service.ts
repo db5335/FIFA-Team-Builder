@@ -14,6 +14,7 @@ export class BuilderService {
     let positionCount = 11;
     
     let ratings: number[][] = [];
+    let copy: number[][] = [];
     let successors: number[] = [];
     let predecessors: number[] = [];
     let values: number[] = [];
@@ -24,10 +25,13 @@ export class BuilderService {
 
     for (let i = 0; i < playerCount; i++) {
       let row = [];
+      let copyRow = [];
       for (let j = 0; j < positionCount; j++) {
         row.push((players[i] as any)[formation.positions[j].toLowerCase()]);
+        copyRow.push((players[i] as any)[formation.positions[j].toLowerCase()]);
       }
       ratings.push(row);
+      copy.push(copyRow);
     }
 
     for (let i = 0; i < playerCount; i++) {
@@ -72,8 +76,34 @@ export class BuilderService {
         let temp = player;
         player = predecessors[successor];
         predecessors[successor] = temp;
+
+        let changed = false;
+        do {
+          console.log('second loop')
+          changed = false;
+          for (let i = 0; i < playerCount; i++) {
+            let tempValue = -1, tempSuccessor = -1;
+            for (let j = 0; j < positionCount; j++) {
+              if (ratings[i][j] + costs[j] > tempValue) {
+                tempValue = ratings[i][j] + costs[j];
+                tempSuccessor = j;
+              }
+            }
+            if (values[i] != tempValue || successors[i] != tempSuccessor) {
+              changed = true;
+              for (let j = 0; j < positionCount; j++) {
+                if (predecessors[j] == i) {
+                  costs[j] = costs[j] + tempValue - values[i];
+                  break;
+                }
+              }
+              values[i] = tempValue;
+              successors[i] = tempSuccessor;
+            }
+          }
+        } while (changed);
         if (c++ > 25) {
-          console.log(ratings);
+          console.log(copy);
           return [];
         }
       } while (player != -1);

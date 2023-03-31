@@ -1,3 +1,5 @@
-<mat-card *ngIf="player != null" [ngStyle]="{'margin-top': top + 'px', 'left': left + '%'}" style="position: absolute; width: 10%">
-    {{ player.name }}
+<mat-card *ngIf="player != null" class="card"
+    [ngStyle]="{'margin-top': top + 'px', 'left': left + '%', 'animation-delay': '-' + 4 * (1 - rating / player.rating) + 's'}"
+    style="position: absolute; width: 10%">
+    {{ player.name }} {{ rating }} / {{ player.rating }}
 </mat-card>

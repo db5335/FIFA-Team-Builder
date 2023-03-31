@@ -1,0 +1,11 @@
+.card {
+    animation: color-gradient 1s linear 1;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    width: 3em;
+}
+
+@keyframes color-gradient {
+    from { background: blanchedalmond; }
+    to { background: firebrick; }
+}

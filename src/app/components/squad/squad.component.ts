@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Formation } from 'src/app/model/formation';
 import { Player } from 'src/app/model/player';
 
@@ -14,7 +14,12 @@ export class SquadComponent implements OnInit {
   @Input() formation: Formation | null = null;
   @Input() players: Player[] = []
 
+  @Output() removeEvent = new EventEmitter<Player>();
+
   ngOnInit(): void {
   }
 
+  public remove(player: Player): void {
+    this.removeEvent.emit(player);
+  }
 }
