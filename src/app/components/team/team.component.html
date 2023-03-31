@@ -1,4 +1,4 @@
-<div style="height: 1000px; background-image: url(../../../assets/pitch.png); background-size: 100% 100%;">
+<div style="height: 1000px; background-image: url(./assets/pitch.png); background-size: 100% 100%;">
     <div *ngIf="formation && players && solution && solution.length == 11" [ngSwitch]="formation.name">
         <ng-container *ngSwitchCase="'3-1-4-2'">
             <app-player [player]="players[solution[0]]" [position]="formation.positions[0]" top="875" left="45"></app-player>
